@@ -60,7 +60,7 @@
     animation-duration: 200ms;
 }
 .key:hover {
-    background-color: #7109AA;
+    background-color: #000;
     opacity: 0.5;
 }
 
@@ -76,7 +76,7 @@
     }
     100% {
         border-radius: 20%;
-        background-color: #7109AA;
+        background-color: grey;
     }
 }
 

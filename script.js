@@ -38,10 +38,11 @@ const CAPSLOCK = {
     },
 } 
 const LANGUAGE = {
-    val: 'en',
+    val: '',
 
     get value() {
-      return this.val || 'en';
+        this.val = this.getLanguageLocalStorage();
+        return this.val || 'en';
     },
 
     set value(val) {
@@ -336,4 +337,3 @@ document.getElementById('keyboard').addEventListener('click', event => {
         event.target.classList.add('active');
     }
 });
-
