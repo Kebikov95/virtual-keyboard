@@ -1,5 +1,5 @@
 /* Variables, constants, objects for implementing button models
-and language parameters, while preserving the values in the LocalStorage */
+and language parameters, while preserving the values in the LocalStorage. */
 const EN_KEYBOARD = [
     '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Delete',
     'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\',
@@ -176,7 +176,7 @@ function initKeyboard(keyboardLayout) {
     }
 }
 
-/* Method for adding values of pressed keyboard keys to an object Textarea.*/
+/* Method for adding values of pressed keyboard keys to an object Textarea. */
 document.addEventListener('keydown', event => {
     const TEXTAREA = document.getElementById('textarea');
     const KEYS = document.querySelectorAll('.key');
@@ -225,7 +225,7 @@ document.addEventListener('keydown', event => {
     }
 });
 
-// Changing keyboard language
+/* Changing keyboard language. */
 function changeLanguage(func, ...codes) {
     let pressed = new Set();
 
@@ -238,14 +238,20 @@ function changeLanguage(func, ...codes) {
                 return;
             }
         }
-
+        
         pressed.clear();
+
         func();
     });
 
     document.addEventListener('keyup', event => {
         pressed.delete(event.key);
         addAnimationKey(event.code);
+    });
+
+    document.addEventListener('keypress', event => {
+        addAnimationKey(event.code);
+        pressed.delete(event.key);
     });
 }
 
@@ -273,7 +279,7 @@ function addAnimationKey(code){
     }
 }
 
-// Method for using a key 'TAB' in Textarea.
+/* Method for using a key 'TAB' in Textarea. */
 document.getElementById('textarea').onkeydown = function(event) {
     if(event.keyCode == 9) {
         let s = this.selectionStart;
@@ -282,7 +288,6 @@ document.getElementById('textarea').onkeydown = function(event) {
         return false;
     }
 };
-
 
 /* Method for implementing pressing a virtual keyboard key and
 then adding the key value to the object Textarea.*/
@@ -337,4 +342,3 @@ document.getElementById('keyboard').addEventListener('click', event => {
         event.target.classList.add('active');
     }
 });
-
